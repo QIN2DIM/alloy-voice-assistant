@@ -1,3 +1,14 @@
+"""
+# SenseVoice: multilingual speech understanding model
+    https://github.com/FunAudioLLM/SenseVoice
+
+# FunASR: fundamental speech recognition toolkit
+    https://github.com/modelscope/FunASR
+
+# CosyVoice: high-quality multilingual TTS model
+    https://github.com/modelscope/CosyVoice
+"""
+
 import os
 import wave
 from pathlib import Path
@@ -8,6 +19,9 @@ from gradio_client import Client, handle_file
 
 load_dotenv()
 
+# SenseVoice: multilingual speech understanding model
+# FunASR: fundamental speech recognition toolkit
+# CosyVoice: high-quality multilingual TTS model
 COSY_VOICE_BASE_URL = os.getenv("COSY_VOICE_BASE_URL", "http://192.168.1.180:50000/")
 SENSE_VOICE_BASE_URL = os.getenv("SENSE_VOICE_BASE_URL", "http://192.168.1.180:57860/")
 
@@ -18,7 +32,7 @@ prompt_text = """
 hello,大家好，我在上期视频当中呢有给大家提一个建议，就是一定要在求职的时候选好适合自己的赛道。那么就有很多朋友后台私信我说，这个赛道到底该怎么选。
 """
 
-prompt_wav_upload_path = "prompt_wav_upload.wav"
+prompt_wav_upload_path = "assets/prompt_wav_upload.wav"
 
 
 def play_audio(file_path: str):

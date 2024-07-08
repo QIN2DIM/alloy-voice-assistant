@@ -133,7 +133,7 @@ if __name__ == "__main__":
     print("example for Funasr_websocket_recognizer")
     import wave
 
-    wav_path = "../prompt_wav_upload.wav"
+    wav_path = "../assets/prompt_wav_upload.wav"
     with wave.open(wav_path, "rb") as wav_file:
         params = wav_file.getparams()
         frames = wav_file.readframes(wav_file.getnframes())
