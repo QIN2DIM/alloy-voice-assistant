@@ -66,3 +66,43 @@ nohup bash run_server.sh \
   --hotword /workspace/models/hotwords.txt > log.txt 2>&1 &
 ```
 
+## TODO
+
+1. 🎶 CABLE Output (VB-Audio Virtual Cable) microphone input device
+
+   结论：系统内播放的音频，将通过 CABLE 传输到 microphone
+
+2. `xhs 直播间`、`会议软件`、`WebRTC 泛用型场景` 音频输入接口
+
+   结论：直接播放音频即可，在麦克风设置项选择 CABLE
+
+3. LMM 语音交互 baseline
+
+   - [ ] 音频文件写入测试，也即，“将离线音频文件通过 microphone 发送到 live”
+   - [ ] (4~20s) 流式响应，也即，“模型输出能通过 microphone cable channel 发送到 live”
+   - [ ] (<1s) 延时优化
+   - [ ] (Nice TO Have) 双工通信
+
+4. LMM 高级交互 best-cases
+
+   1. “看见”弹幕，语音交互
+   2. zero-shot 3s voice copy
+   3. 用任意玩家音色唱歌
+   4. GraphRAG + CV/NLP Toolkit
+   5. （A+）24h 情感陪伴
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
