@@ -16,9 +16,15 @@ logging.basicConfig(level=logging.ERROR)
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "--host", type=str, default="localhost", required=False, help="host ip, localhost, 0.0.0.0"
+    "--host",
+    type=str,
+    default="localhost",
+    required=False,
+    help="host ip, localhost, 0.0.0.0",
 )
-parser.add_argument("--port", type=int, default=10095, required=False, help="grpc server port")
+parser.add_argument(
+    "--port", type=int, default=10095, required=False, help="grpc server port"
+)
 parser.add_argument("--chunk_size", type=str, default="5, 10, 5", help="chunk")
 parser.add_argument("--encoder_chunk_look_back", type=int, default=4, help="chunk")
 parser.add_argument("--decoder_chunk_look_back", type=int, default=0, help="chunk")
@@ -40,8 +46,12 @@ parser.add_argument(
 parser.add_argument("--thread_num", type=int, default=1, help="thread_num")
 parser.add_argument("--words_max_print", type=int, default=10000, help="chunk")
 parser.add_argument("--output_dir", type=str, default=None, help="output_dir")
-parser.add_argument("--ssl", type=int, default=1, help="1 for ssl connect, 0 for no ssl")
-parser.add_argument("--use_itn", type=int, default=1, help="1 for using itn, 0 for not itn")
+parser.add_argument(
+    "--ssl", type=int, default=1, help="1 for ssl connect, 0 for no ssl"
+)
+parser.add_argument(
+    "--use_itn", type=int, default=1, help="1 for using itn, 0 for not itn"
+)
 parser.add_argument("--mode", type=str, default="2pass", help="offline, online, 2pass")
 
 args = parser.parse_args()
@@ -186,7 +196,9 @@ async def record_from_scp(chunk_begin, chunk_size):
             with open(wav_path, "rb") as f:
                 audio_bytes = f.read()
 
-        stride = int(60 * args.chunk_size[1] / args.chunk_interval / 1000 * sample_rate * 2)
+        stride = int(
+            60 * args.chunk_size[1] / args.chunk_interval / 1000 * sample_rate * 2
+        )
         chunk_num = (len(audio_bytes) - 1) // stride + 1
         # print(stride)
 
@@ -334,7 +346,9 @@ async def ws_client(id, chunk_begin, chunk_size):
                 task = asyncio.create_task(record_from_scp(i, 1))
             else:
                 task = asyncio.create_task(record_microphone())
-            task3 = asyncio.create_task(message(str(id) + "_" + str(i)))  # processid+fileid
+            task3 = asyncio.create_task(
+                message(str(id) + "_" + str(i))
+            )  # processid+fileid
             await asyncio.gather(task, task3)
     exit(0)
 

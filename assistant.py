@@ -166,7 +166,10 @@ class Assistant:
                     "human",
                     [
                         {"type": "text", "text": "{prompt}"},
-                        {"type": "image_url", "image_url": "data:image/jpeg;base64,{image_base64}"},
+                        {
+                            "type": "image_url",
+                            "image_url": "data:image/jpeg;base64,{image_base64}",
+                        },
                     ],
                 ),
             ]
@@ -224,7 +227,9 @@ class S2SPipeline:
         with microphone as source:
             recognizer.adjust_for_ambient_noise(source)
 
-        stop_listening = recognizer.listen_in_background(microphone, self.audio_callback)
+        stop_listening = recognizer.listen_in_background(
+            microphone, self.audio_callback
+        )
 
         logger.info("Press Ctrl+C to stop listening.")
         try:

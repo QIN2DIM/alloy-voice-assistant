@@ -143,7 +143,11 @@ if __name__ == "__main__":
     chunk_num = (len(audio_bytes) - 1) // stride + 1
     # create an recognizer
     rcg = Funasr_websocket_recognizer(
-        host="192.168.1.180", port="10096", is_ssl=True, mode="2pass", chunk_size="0,10,5"
+        host="192.168.1.180",
+        port="10096",
+        is_ssl=True,
+        mode="2pass",
+        chunk_size="0,10,5",
     )
     # loop to send chunk
     for i in range(chunk_num):
