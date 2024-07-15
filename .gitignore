@@ -169,4 +169,4 @@ cython_debug/
 */.DS_Store
 .vscode
 ragtest/
-./assets
+assets/
