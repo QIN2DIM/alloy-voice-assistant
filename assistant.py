@@ -5,7 +5,6 @@ import wave
 from threading import Lock, Thread
 
 import cv2
-import openai
 from cv2 import VideoCapture, imencode
 from dotenv import load_dotenv
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -15,7 +14,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI
 from loguru import logger
-from pyaudio import PyAudio, paInt16
 from speech_recognition import Microphone, Recognizer, UnknownValueError
 
 from s2s_client import gradio_tts, gradio_asr
@@ -146,15 +144,6 @@ class Assistant:
         if response_text:
             # self._tts(response_text)
             gradio_tts(tts_text=response_text, seed=0)
-
-    @staticmethod
-    def _tts(response_text: str):
-        player = PyAudio().open(format=paInt16, channels=1, rate=24000, output=True)
-        with openai.audio.speech.with_streaming_response.create(
-            model="tts-1", voice="alloy", response_format="pcm", input=response_text
-        ) as stream:
-            for chunk in stream.iter_bytes(chunk_size=1024):
-                player.write(chunk)
 
     @staticmethod
     def _create_inference_chain():

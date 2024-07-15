@@ -6,5 +6,4 @@ python-dotenv
 pyaudio
 soundfile
 SpeechRecognition
-openai
 loguru

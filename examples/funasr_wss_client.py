@@ -5,9 +5,9 @@ import asyncio
 import json
 import logging
 import os
+import ssl
 from multiprocessing import Process
 
-import ssl
 import websockets
 
 # from funasr.fileio.datadir_writer import DatadirWriter

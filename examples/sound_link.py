@@ -1,6 +1,7 @@
+import wave
+
 import numpy as np
 import sounddevice as sd
-import wave
 
 
 def read_audio_file(file_path):
